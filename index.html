@@ -80,6 +80,7 @@ h2{font-size:30px;letter-spacing:-.01em;margin-bottom:8px}
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 32px}
 .gallery img{width:100%;border-radius:10px;border:1px solid var(--line);background:#fff;display:block}
 .project-foot{padding:24px 32px 32px;display:flex;flex-wrap:wrap;gap:12px}
+.project + .project{margin-top:28px}
 
 .upcoming{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .mini{border:1px dashed var(--line);border-radius:14px;padding:20px;background:var(--card)}
@@ -154,6 +155,7 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
       <li><span>Studying</span><span>BSc Management, Decisions &amp; Data Analytics (2nd year)</span></li>
       <li><span>University</span><span>Constructor University, Bremen</span></li>
       <li><span>Focus</span><span>Customer analytics · ML · Decision science</span></li>
+      <li><span>Projects</span><span>Customer segmentation · Churn &amp; retention ROI</span></li>
       <li><span>Tools</span><span>Python · pandas · scikit-learn · SQL</span></li>
       <li><span>Open to</span><span>Internships &amp; working student roles</span></li>
     </ul>
@@ -164,6 +166,46 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
   <div class="wrap">
     <h2>Projects</h2>
     <p class="sub">Real data, real decisions. Every project ends with a business recommendation.</p>
+
+    <article class="project">
+      <div class="project-head">
+        <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Classification</span><span class="tag">Decision analysis</span><span class="tag">Cost-benefit</span></div>
+        <h3>Churn Prediction &amp; Retention ROI: Who is worth a retention offer?</h3>
+        <p>A telecom company loses 26.5% of its customers. Discounts cost money, and most go to customers who would have stayed anyway. I predicted each customer's churn risk, then put dollar values on every outcome to find the targeting rule that maximises campaign profit, and tested how that decision changes with the offer's economics.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>−$12k → $98k</b><span>offer to everyone vs model-based targeting</span></div>
+        <div class="stat"><b>78%</b><span>of churners reached by contacting 40% of customers</span></div>
+        <div class="stat"><b>0.28</b><span>profit-optimal threshold (not the default 0.5)</span></div>
+        <div class="stat"><b>0.84</b><span>ROC-AUC on unseen customers</span></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Explored 7,043 customers: month-to-month contracts are 55% of customers but <strong>89% of churners</strong>, and 53% leave in their first 6 months</li>
+            <li>Compared logistic regression, random forest and gradient boosting with cross-validation, then <strong>chose the simplest model on purpose</strong>: equally accurate, explainable and well calibrated</li>
+            <li>Built a cost-benefit model and derived the <strong>break-even churn probability (~0.31)</strong>, which the data-driven optimum (0.28) confirmed</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key insight</h4>
+          <ul>
+            <li><strong>Offering a discount to everyone loses money</strong>; targeting the riskiest 40% turns the same idea into ~$98k profit</li>
+            <li>The right threshold <strong>depends on the offer</strong>: from targeting broadly to not running the campaign at all</li>
+            <li><strong>Recommendation:</strong> A/B test the offer to measure its real success rate before scaling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="gallery">
+        <img src="assets/img/03_profit_curve.png" alt="Campaign profit for every targeting threshold, peaking around 0.28" loading="lazy">
+        <img src="assets/img/03_strategies.png" alt="Profit of each targeting strategy: offering to everyone loses money, model-based targeting earns about 98 thousand dollars" loading="lazy">
+      </div>
+      <div class="project-foot">
+        <a class="btn primary" href="https://github.com/MOOZYYYY/churn-prediction" target="_blank" rel="noopener">View code &amp; full analysis →</a>
+        <a class="btn" href="https://github.com/MOOZYYYY/churn-prediction/blob/main/notebooks/03_decision_analysis.ipynb" target="_blank" rel="noopener">Open the decision analysis</a>
+      </div>
+    </article>
 
     <article class="project">
       <div class="project-head">
@@ -205,9 +247,9 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     </article>
 
     <div class="upcoming">
-      <div class="mini"><span class="status">Up next</span><h4>Churn Prediction &amp; Retention ROI</h4><p>Predict which customers will leave, then decide who is worth a retention offer based on expected profit.</p></div>
-      <div class="mini"><span class="status">Planned</span><h4>Demand Forecasting &amp; Inventory Optimisation</h4><p>Forecast demand, then use linear programming to decide order quantities that minimise cost.</p></div>
+      <div class="mini"><span class="status">Up next</span><h4>Demand Forecasting &amp; Inventory Optimisation</h4><p>Forecast demand, then use linear programming to decide order quantities that minimise cost.</p></div>
       <div class="mini"><span class="status">Planned</span><h4>A/B Test Analysis</h4><p>Hypothesis testing and a clear launch / don't-launch recommendation.</p></div>
+      <div class="mini"><span class="status">Planned</span><h4>Uplift Modelling</h4><p>Go beyond "who will churn" to "who can be persuaded", targeting only customers an offer actually changes.</p></div>
     </div>
   </div>
 </section>
@@ -218,8 +260,8 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     <p class="sub">What I use to get from raw data to a decision.</p>
     <div class="skills">
       <div class="skill"><h4>Data &amp; programming</h4><div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">SQL</span><span class="chip">Jupyter</span><span class="chip">Git &amp; GitHub</span></div></div>
-      <div class="skill"><h4>Analytics &amp; ML</h4><div class="chips"><span class="chip">Data cleaning</span><span class="chip">Clustering</span><span class="chip">RFM analysis</span><span class="chip">scikit-learn</span><span class="chip">Statistics</span><span class="chip">Visualisation</span></div></div>
-      <div class="skill"><h4>Business &amp; decisions</h4><div class="chips"><span class="chip">Customer analytics</span><span class="chip">Decision analysis</span><span class="chip">Optimisation</span><span class="chip">KPIs</span><span class="chip">Storytelling with data</span></div></div>
+      <div class="skill"><h4>Analytics &amp; ML</h4><div class="chips"><span class="chip">Data cleaning</span><span class="chip">Classification</span><span class="chip">Clustering</span><span class="chip">RFM analysis</span><span class="chip">scikit-learn</span><span class="chip">Statistics</span><span class="chip">Visualisation</span></div></div>
+      <div class="skill"><h4>Business &amp; decisions</h4><div class="chips"><span class="chip">Customer analytics</span><span class="chip">Decision analysis</span><span class="chip">Cost-benefit modelling</span><span class="chip">Sensitivity analysis</span><span class="chip">Optimisation</span><span class="chip">KPIs</span><span class="chip">Storytelling with data</span></div></div>
     </div>
   </div>
 </section>
