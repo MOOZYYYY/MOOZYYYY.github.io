@@ -155,8 +155,8 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
       <li><span>Studying</span><span>BSc Management, Decisions &amp; Data Analytics (2nd year)</span></li>
       <li><span>University</span><span>Constructor University, Bremen</span></li>
       <li><span>Focus</span><span>Customer analytics · ML · Decision science</span></li>
-      <li><span>Projects</span><span>Customer segmentation · Churn &amp; retention ROI</span></li>
-      <li><span>Tools</span><span>Python · pandas · scikit-learn · SQL</span></li>
+      <li><span>Projects</span><span>Inventory optimisation · Churn &amp; retention ROI · Customer segmentation</span></li>
+      <li><span>Tools</span><span>Python · pandas · scikit-learn · statsmodels · SciPy · SQL</span></li>
       <li><span>Open to</span><span>Internships &amp; working student roles</span></li>
     </ul>
   </div>
@@ -166,6 +166,46 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
   <div class="wrap">
     <h2>Projects</h2>
     <p class="sub">Real data, real decisions. Every project ends with a business recommendation.</p>
+
+    <article class="project">
+      <div class="project-head">
+        <div class="tags"><span class="tag">Python</span><span class="tag">Time-series forecasting</span><span class="tag">Mixed-integer programming</span><span class="tag">Simulation</span><span class="tag">Operations research</span></div>
+        <h3>Demand Forecasting &amp; Inventory Optimisation: How much should a retailer order each week?</h3>
+        <p>For the same UK online retailer as my segmentation project, I forecast weekly demand for its 5 top products, measured how wrong the forecasts are, and fed that uncertainty into a mixed-integer programme that plans orders under warehouse space, budget and ordering costs. Then I simulated it on 12 weeks of real demand against simpler policies.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>−32%</b><span>inventory cost vs "order what you sold"</span></div>
+        <div class="stat"><b>1 in 6</b><span>units of demand lost when ordering exactly the forecast</span></div>
+        <div class="stat"><b>39 vs 60</b><span>orders placed in 12 weeks (optimiser vs rule of thumb)</span></div>
+        <div class="stat"><b>~1,200</b><span>warehouse units, beyond which extra space stops paying off</span></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Built weekly demand from 540k+ invoice lines, adjusting for Saturdays, Christmas and bank holidays, and split off <strong>bulk wholesale orders</strong> (1% of lines, 12–31% of units) as unforecastable</li>
+            <li>Back-tested 6 forecasting models week by week; <strong>simple exponential smoothing won</strong> (29% error vs 37% for the naive forecast)</li>
+            <li>Formulated a <strong>MILP</strong> (SciPy/HiGHS) with expected lost sales from the forecast uncertainty, so the model chooses its own safety stock</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key insight</h4>
+          <ul>
+            <li>A good forecast isn't enough: <strong>you have to plan for its error</strong></li>
+            <li>The optimiser beat every benchmark on test and validation weeks and at <strong>every warehouse size</strong>, mainly through fewer, batched orders</li>
+            <li><strong>Recommendation:</strong> optimised ordering, bulk orders taken in advance, and warehouse space of up to ~1,200 units</li>
+          </ul>
+        </div>
+      </div>
+      <div class="gallery">
+        <img src="assets/img/03_policy_comparison.png" alt="Total cost and fill rate of four ordering policies; the optimiser has the lowest cost" loading="lazy">
+        <img src="assets/img/03_capacity_sensitivity.png" alt="Total cost and fill rate by warehouse capacity for three policies" loading="lazy">
+      </div>
+      <div class="project-foot">
+        <a class="btn primary" href="https://github.com/MOOZYYYY/demand-forecasting" target="_blank" rel="noopener">View code &amp; full analysis →</a>
+        <a class="btn" href="https://github.com/MOOZYYYY/demand-forecasting/blob/main/notebooks/03_inventory_optimisation.ipynb" target="_blank" rel="noopener">Open the optimisation notebook</a>
+      </div>
+    </article>
 
     <article class="project">
       <div class="project-head">
@@ -247,9 +287,9 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     </article>
 
     <div class="upcoming">
-      <div class="mini"><span class="status">Up next</span><h4>Demand Forecasting &amp; Inventory Optimisation</h4><p>Forecast demand, then use linear programming to decide order quantities that minimise cost.</p></div>
-      <div class="mini"><span class="status">Planned</span><h4>A/B Test Analysis</h4><p>Hypothesis testing and a clear launch / don't-launch recommendation.</p></div>
+      <div class="mini"><span class="status">Up next</span><h4>A/B Test Analysis</h4><p>Hypothesis testing and a clear launch / don't-launch recommendation.</p></div>
       <div class="mini"><span class="status">Planned</span><h4>Uplift Modelling</h4><p>Go beyond "who will churn" to "who can be persuaded", targeting only customers an offer actually changes.</p></div>
+      <div class="mini"><span class="status">Planned</span><h4>SQL Sales Dashboard</h4><p>A KPI dashboard built on SQL queries, turning the retailer's raw transactions into weekly management reporting.</p></div>
     </div>
   </div>
 </section>
@@ -260,8 +300,8 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     <p class="sub">What I use to get from raw data to a decision.</p>
     <div class="skills">
       <div class="skill"><h4>Data &amp; programming</h4><div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">SQL</span><span class="chip">Jupyter</span><span class="chip">Git &amp; GitHub</span></div></div>
-      <div class="skill"><h4>Analytics &amp; ML</h4><div class="chips"><span class="chip">Data cleaning</span><span class="chip">Classification</span><span class="chip">Clustering</span><span class="chip">RFM analysis</span><span class="chip">scikit-learn</span><span class="chip">Statistics</span><span class="chip">Visualisation</span></div></div>
-      <div class="skill"><h4>Business &amp; decisions</h4><div class="chips"><span class="chip">Customer analytics</span><span class="chip">Decision analysis</span><span class="chip">Cost-benefit modelling</span><span class="chip">Sensitivity analysis</span><span class="chip">Optimisation</span><span class="chip">KPIs</span><span class="chip">Storytelling with data</span></div></div>
+      <div class="skill"><h4>Analytics &amp; ML</h4><div class="chips"><span class="chip">Data cleaning</span><span class="chip">Classification</span><span class="chip">Clustering</span><span class="chip">RFM analysis</span><span class="chip">scikit-learn</span><span class="chip">Time-series forecasting</span><span class="chip">Statistics</span><span class="chip">Visualisation</span></div></div>
+      <div class="skill"><h4>Business &amp; decisions</h4><div class="chips"><span class="chip">Customer analytics</span><span class="chip">Decision analysis</span><span class="chip">Cost-benefit modelling</span><span class="chip">Sensitivity analysis</span><span class="chip">Linear &amp; integer programming</span><span class="chip">Inventory optimisation</span><span class="chip">Simulation</span><span class="chip">KPIs</span><span class="chip">Storytelling with data</span></div></div>
     </div>
   </div>
 </section>
