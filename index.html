@@ -81,6 +81,8 @@ h2{font-size:30px;letter-spacing:-.01em;margin-bottom:8px}
 .gallery img{width:100%;border-radius:10px;border:1px solid var(--line);background:#fff;display:block}
 .project-foot{padding:24px 32px 32px;display:flex;flex-wrap:wrap;gap:12px}
 .project + .project{margin-top:28px}
+.gallery.single{grid-template-columns:1fr}
+.gallery.single img{max-height:440px;object-fit:cover;object-position:top}
 
 .upcoming{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .mini{border:1px dashed var(--line);border-radius:14px;padding:20px;background:var(--card)}
@@ -132,6 +134,7 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     <p class="lead">I'm a student combining management, decision science and data analytics. I like messy real-world data, clear models, and recommendations a manager can act on.</p>
     <div class="btns">
       <a class="btn primary" href="#projects">View my projects</a>
+      <a class="btn" href="sales-dashboard/">Live dashboard</a>
       <a class="btn" href="https://www.linkedin.com/in/muzi-mazibuko/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
         LinkedIn</a>
@@ -155,7 +158,7 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
       <li><span>Studying</span><span>BSc Management, Decisions &amp; Data Analytics (2nd year)</span></li>
       <li><span>University</span><span>Constructor University, Bremen</span></li>
       <li><span>Focus</span><span>Customer analytics · ML · Decision science</span></li>
-      <li><span>Projects</span><span>Inventory optimisation · Churn &amp; retention ROI · Customer segmentation</span></li>
+      <li><span>Projects</span><span>SQL dashboard · Inventory optimisation · Churn &amp; retention ROI · Customer segmentation</span></li>
       <li><span>Tools</span><span>Python · pandas · scikit-learn · statsmodels · SciPy · SQL</span></li>
       <li><span>Open to</span><span>Internships &amp; working student roles</span></li>
     </ul>
@@ -166,6 +169,45 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
   <div class="wrap">
     <h2>Projects</h2>
     <p class="sub">Real data, real decisions. Every project ends with a business recommendation.</p>
+
+    <article class="project">
+      <div class="project-head">
+        <div class="tags"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Star schema</span><span class="tag">Window functions</span><span class="tag">Dashboard</span></div>
+        <h3>SQL Sales Dashboard: From 540k raw invoice lines to management reporting</h3>
+        <p>For the same UK online retailer, I designed a star-schema database, wrote the transformations and 13 analysis queries in SQL (cohort retention, growth, customer tiers, ABC analysis), cross-checked the results against an independent calculation, and built an interactive dashboard on top of them.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>13</b><span>SQL queries: CTEs, <code>LAG</code>, <code>NTILE</code>, running sums</span></div>
+        <div class="stat"><b>60%</b><span>of revenue from the top 10% of customers</span></div>
+        <div class="stat"><b>22% → 80%</b><span>of products make up 80% of revenue (ABC)</span></div>
+        <div class="stat"><b>£0.00</b><span>difference between SQL and the independent pandas check</span></div>
+      </div>
+      <div class="project-body">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Modelled the data as a <strong>star schema</strong> (fact table + customer, product and date dimensions) with keys, indexes and data-quality checks on every build</li>
+            <li>Wrote <strong>cohort retention</strong>, month-over-month growth with <code>LAG()</code>, customer deciles with <code>NTILE()</code> and an ABC product analysis in SQL</li>
+            <li>Caught real analytics traps: the AOV per-line vs per-order mistake, partial months, and a left-censored first cohort</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Key insight</h4>
+          <ul>
+            <li><strong>Repeat customers run the business:</strong> 88% of November revenue came from returning customers</li>
+            <li>The <strong>second order is the slow one</strong>: 35% of customers wait over 3 months before ordering again</li>
+            <li><strong>Recommendation:</strong> account-manage the top 10%, follow up 6–8 weeks after a first order, and review the 53% of products that make only 5% of revenue</li>
+          </ul>
+        </div>
+      </div>
+      <div class="gallery single">
+        <a href="sales-dashboard/"><img src="assets/img/sales_dashboard.png" alt="Screenshot of the interactive sales dashboard with revenue trend, cohort retention heatmap and customer and product charts" loading="lazy"></a>
+      </div>
+      <div class="project-foot">
+        <a class="btn primary" href="sales-dashboard/">Open the live dashboard →</a>
+        <a class="btn" href="https://github.com/MOOZYYYY/sql-sales-dashboard" target="_blank" rel="noopener">View the SQL &amp; code</a>
+      </div>
+    </article>
 
     <article class="project">
       <div class="project-head">
@@ -289,7 +331,7 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     <div class="upcoming">
       <div class="mini"><span class="status">Up next</span><h4>A/B Test Analysis</h4><p>Hypothesis testing and a clear launch / don't-launch recommendation.</p></div>
       <div class="mini"><span class="status">Planned</span><h4>Uplift Modelling</h4><p>Go beyond "who will churn" to "who can be persuaded", targeting only customers an offer actually changes.</p></div>
-      <div class="mini"><span class="status">Planned</span><h4>SQL Sales Dashboard</h4><p>A KPI dashboard built on SQL queries, turning the retailer's raw transactions into weekly management reporting.</p></div>
+      <div class="mini"><span class="status">Planned</span><h4>Customer Lifetime Value</h4><p>Predict how much each customer will be worth over the next year, to decide how much to spend acquiring and keeping them.</p></div>
     </div>
   </div>
 </section>
@@ -299,7 +341,7 @@ footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;border
     <h2>Skills</h2>
     <p class="sub">What I use to get from raw data to a decision.</p>
     <div class="skills">
-      <div class="skill"><h4>Data &amp; programming</h4><div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">SQL</span><span class="chip">Jupyter</span><span class="chip">Git &amp; GitHub</span></div></div>
+      <div class="skill"><h4>Data &amp; programming</h4><div class="chips"><span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">SQL (CTEs, window functions)</span><span class="chip">Data modelling (star schema)</span><span class="chip">Jupyter</span><span class="chip">Git &amp; GitHub</span></div></div>
       <div class="skill"><h4>Analytics &amp; ML</h4><div class="chips"><span class="chip">Data cleaning</span><span class="chip">Classification</span><span class="chip">Clustering</span><span class="chip">RFM analysis</span><span class="chip">scikit-learn</span><span class="chip">Time-series forecasting</span><span class="chip">Statistics</span><span class="chip">Visualisation</span></div></div>
       <div class="skill"><h4>Business &amp; decisions</h4><div class="chips"><span class="chip">Customer analytics</span><span class="chip">Decision analysis</span><span class="chip">Cost-benefit modelling</span><span class="chip">Sensitivity analysis</span><span class="chip">Linear &amp; integer programming</span><span class="chip">Inventory optimisation</span><span class="chip">Simulation</span><span class="chip">KPIs</span><span class="chip">Storytelling with data</span></div></div>
     </div>
